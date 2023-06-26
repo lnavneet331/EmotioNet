@@ -23,24 +23,7 @@ def select_random_files(folder_path, num_files):
     print(f"Randomly selected {num_files} files and saved them in '{selected_folder}'.")
 
 # Provide the path to your folder and the number of files to select
-folder_path = 'dataset/Hatred'
-num_files = 10000
-
-select_random_files(folder_path, num_files)
-
-folder_path = 'dataset/Happy'
-num_files = 10000
-
-select_random_files(folder_path, num_files)
-
-
-folder_path = 'dataset/Neutral'
-num_files = 10000
-
-select_random_files(folder_path, num_files)
-
-
-folder_path = 'dataset/Sad'
+folder_path = 'dataset/Surprised'
 num_files = 10000
 
 select_random_files(folder_path, num_files)

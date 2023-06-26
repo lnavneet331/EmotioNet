@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from tqdm import tqdm
 
 def crop_face(image_path):
     """Crops everything except the face in an image.
@@ -32,7 +33,11 @@ def crop_face(image_path):
 
 
 if __name__ == '__main__':
-    image_path = 'input_image.jpg'
-    cropped_image = crop_face(image_path)
-    cv2.imshow('Cropped Image', cropped_image)
-    cv2.waitKey(0)
+    folder_path = "shortdataset/Surprised/selected_files"
+    files = os.listdir(folder_path)
+
+    for file_name in tqdm(files, desc="Processing images"):
+        image_path = os.path.join(folder_path, file_name)
+        cropped_image = crop_face(image_path)
+        # Save the cropped image
+        cv2.imwrite(image_path, cropped_image)
