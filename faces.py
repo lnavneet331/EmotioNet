@@ -32,7 +32,7 @@ def crop_face(image_path):
         cropped_image = cv2.resize(image, (48, 48))
         print('Cropped image dimensions: {} x {} pixels'.format(cropped_image.shape[1], cropped_image.shape[0]))
         return cropped_image
-        
+
     face = faces[0]
     (x, y, w, h) = face
     cropped_image = image[y:y + h, x:x + w]
@@ -44,11 +44,12 @@ def crop_face(image_path):
 
 if __name__ == '__main__':
     count = 0
-    folder_path = "shortdataset/Surprised/selected_files"
-    for file_name in os.listdir(folder_path):
-        image_path = os.path.join(folder_path, file_name)
-        cropped_image = crop_face(image_path)
-        # Save the cropped image
-        cv2.imwrite(image_path, cropped_image)
-        count += 1
-        print(count)
+    main_folder = "dataset"
+    for folder_path in os.listdir(main_folder):
+        for file_name in os.listdir(f"{main_folder}\{folder_path}"):
+            image_path = os.path.join(main_folder, folder_path, file_name)
+            cropped_image = crop_face(image_path)
+            # Save the cropped image
+            cv2.imwrite(image_path, cropped_image)
+            count += 1
+            print(count, folder_path, file_name)
